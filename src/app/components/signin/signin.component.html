@@ -41,6 +41,21 @@
                                     <div *ngIf="f.last_name.errors.minlength">Este campo debe tener al menos 2 caracteres</div>
                                 </div>
                             </div>
+                            <div role="group" class="form-group mb-4">
+                                <label for="email" class="d-block form-label text-left text-uppercase letter-spacing-1">Correo electrónico</label>
+                                <div role="group" class="input-group input-group-merge form-control-prepended">
+                                    <input id="email" type="text" formControlName="email" name="email" placeholder="Correo electrónico" required="required" aria-required="true" class="form-control form-control-prepended" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <span><i class="bi-info-circle"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="f.email.errors && submitted" class="invalid-feedback">
+                                    <div *ngIf="f.email.errors.required">Este campo es obligatorio</div>
+                                    <div *ngIf="f.email.errors.email">Debe colocar un correo electrónico válido</div>
+                                </div>
+                            </div>
                             <!-- Se coloca datepicker para la fecha de nacimiento -->
                             <!-- <div role="group" class="form-group mb-4">
                                 <label class="d-block form-label text-left text-uppercase letter-spacing-1">Edad:</label>
@@ -120,7 +135,7 @@
                             <div role="group" class="form-group mb-4">
                                 <label for="company-name" class="d-block form-label text-left text-uppercase letter-spacing-1">Confirmar contraseña</label>
                                 <div role="group" class="input-group input-group-merge form-control-prepended">
-                                    <input id="password-confirm" type="password" (change)="verify()" formControlName="password_confirm" name="confirm-password" placeholder="Confirmar contraseña" required="required" aria-required="true" class="form-control form-control-prepended color_input" [ngClass]="{ 'is-invalid': submitted && f.password_confirm.errors }"/>
+                                    <input id="password-confirm" type="password" formControlName="password_confirm" name="confirm-password" placeholder="Confirmar contraseña" required="required" aria-required="true" class="form-control form-control-prepended color_input" [ngClass]="{ 'is-invalid': submitted && f.password_confirm.errors }"/>
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <span><i class="bi-lock"></i></span>
@@ -133,7 +148,7 @@
                                 </div>
                             </div>
                             <div class="form-group mb-0 d-grid">
-                                <button type="submit" class="btn btn-primary btn-block">Registrarme</button>
+                                <button type="submit" class="btn btn-primary btn-block" [disabled]="request" [ngClass]="{ 'disabled': request }">Registrarme</button>
                             </div>
                         </form>
                     </div>
@@ -147,3 +162,4 @@
         </div>
     </div>
 </div>
+<app-notify #notify></app-notify>
