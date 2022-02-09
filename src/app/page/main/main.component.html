@@ -1,0 +1,2 @@
+<app-index #login *ngIf="index" (change_view)="onEvent($event)"></app-index>
+<app-signin #signin *ngIf="!index" (change_index)="onEvent($event)"></app-signin>
