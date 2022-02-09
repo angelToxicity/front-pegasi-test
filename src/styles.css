@@ -43,6 +43,16 @@
     line-height: 18px;
 }
 
+.font-32 {
+    font-size: 32px;
+    line-height: 32px;
+}
+  
+.font-40 {
+    font-size: 40px;
+    line-height: 40px;
+}
+
 .login-page {
     height: 100vh;
     display: flex;
@@ -70,4 +80,75 @@
     letter-spacing: 1px;
     font-size: 14px;
     margin-bottom: 6px;
+}
+
+.page-title {
+    border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
+    padding-bottom: 8px;
+    margin-bottom: 38px;
+}
+
+.page-title h4 {
+    font-size: 25px;
+    margin-bottom: 10px;
+    letter-spacing: 0.4px;
+}
+  
+.page-title p {
+    color: rgba(39, 44, 51, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12px;
+    font-family: "Poppins-SemiBold";
+}
+
+.main {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.section-tile {
+    position: relative;
+    margin-bottom: 20px;
   }
+  
+.section-tile h2 {
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-family: "Poppins-SemiBold";
+    background: #F5F7FA;
+    display: inline-flex;
+    padding-right: 10px;
+}
+
+.section-tile h2 .b-icon.bi {
+    font-size: 22px;
+    position: relative;
+    top: 3px;
+    margin: 0 8px 0 18px;
+}
+  
+.card .section-tile h2 {
+    background: #F7F7F7;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 4px;
+}
+  
+.card .section-tile::before {
+    content: none;
+}
+  
+.section-tile::before {
+    content: "";
+    height: 1px;
+    width: 100%;
+    top: 50%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: -1;
+}
