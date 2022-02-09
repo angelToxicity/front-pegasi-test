@@ -1,0 +1,165 @@
+<div class="login-page" >
+    <div class="container">
+        <div id="select-acount-type" class="login-box card navbar-shadow">
+            <div class="card-header text-center">
+                <img class="logo mb-2 mt-2" src="/assets/images/pegasi.png" />
+                <h4 class="card-title font-bold font-18 mb-1">Regístrate</h4>
+                <p class="card-subtitle text-black-50">Rellena los datos de tu cuenta</p>
+            </div>
+            <div class="card-body py-4">
+                <div id="login empresa" class="login-box card">
+                    <div class="card-body">
+                        <form novalidate [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                            <div role="group" class="form-group mb-4">
+                                <label for="name" class="d-block form-label text-left text-uppercase letter-spacing-1">Nombre:</label>
+                                <div role="group" class="input-group input-group-merge">
+                                    <input id="name" type="text" formControlName="name" name="first" placeholder="Nombre" required aria-required="true" class="form-control form-control-prepended" [ngClass]="{ 'is-invalid': submitted && f.name.errors }"/>
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <span><i class="bi-info-circle"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="f.name.errors && submitted" class="invalid-feedback">
+                                    <div *ngIf="f.name.errors.required">Este campo es obligatorio</div>
+                                    <div *ngIf="f.name.errors.minlength">Este campo debe tener al menos 2 caracteres</div>
+                                    <br>
+                                </div>
+                            </div>
+                            <div role="group" class="form-group mb-4">
+                                <label for="last-name" class="d-block form-label text-left text-uppercase letter-spacing-1">Apellido</label>
+                                <div role="group" class="input-group input-group-merge form-control-prepended">
+                                    <input id="last-name" type="text" formControlName="last_name" name="last" placeholder="Apellido" required="required" aria-required="true" class="form-control form-control-prepended" [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }"/>
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <span><i class="bi-info-circle"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="f.last_name.errors && submitted" class="invalid-feedback">
+                                    <div *ngIf="f.last_name.errors.required">Este campo es obligatorio</div>
+                                    <div *ngIf="f.last_name.errors.minlength">Este campo debe tener al menos 2 caracteres</div>
+                                </div>
+                            </div>
+                            <div role="group" class="form-group mb-4">
+                                <label for="email" class="d-block form-label text-left text-uppercase letter-spacing-1">Correo electrónico</label>
+                                <div role="group" class="input-group input-group-merge form-control-prepended">
+                                    <input id="email" type="text" formControlName="email" name="email" placeholder="Correo electrónico" required="required" aria-required="true" class="form-control form-control-prepended" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <span><i class="bi-info-circle"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="f.email.errors && submitted" class="invalid-feedback">
+                                    <div *ngIf="f.email.errors.required">Este campo es obligatorio</div>
+                                    <div *ngIf="f.email.errors.email">Debe colocar un correo electrónico válido</div>
+                                </div>
+                            </div>
+                            <!-- Se coloca datepicker para la fecha de nacimiento -->
+                            <!-- <div role="group" class="form-group mb-4">
+                                <label class="d-block form-label text-left text-uppercase letter-spacing-1">Edad:</label>
+                                <div role="group" class="input-group input-group-merge form-control-prepended">
+                                    <select name="age" id="age" formControlName="age" class="form-control"></select>
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <span><i class="bi-person-fill"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div role="group" class="form-group mb-4">
+                                <label class="d-block form-label text-left text-uppercase letter-spacing-1">Sexo:</label>
+                                <div class="form-check form-check-inline offset-md-2">
+                                    <input class="form-check-input" formControlName="gender" type="radio" name="gender" id="inlineRadio1" value="M" required [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">
+                                    <label class="form-check-label" for="inlineRadio1">Masculino</label>
+                                </div>
+                                <div class="form-check form-check-inline offset-md-2">
+                                    <input class="form-check-input" formControlName="gender" type="radio" name="gender" id="inlineRadio2" value="F" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">
+                                    <label class="form-check-label" for="inlineRadio2">Femenino</label>
+                                </div>
+                                <div *ngIf="f.gender.errors && submitted" class="invalid-feedback">
+                                    <div *ngIf="f.gender.errors.required">Este campo es obligatorio</div>
+                                </div>
+                            </div>
+                            <div role="group" class="form-group mb-4" *ngIf="f.gender.value == 'F'">
+                                <div class="form-check form-check-inline offset-md-2">
+                                    <input class="form-check-input" formControlName="state" type="radio" name="state" id="inlineRadio3" value="embarazo" required [ngClass]="{ 'is-invalid': submitted && f.state.errors }">
+                                    <label class="form-check-label" for="inlineRadio3">Embarazo</label>
+                                </div>
+                                <div class="form-check form-check-inline offset-md-2">
+                                    <input class="form-check-input" formControlName="state" type="radio" name="state" id="inlineRadio4" value="lactancia" [ngClass]="{ 'is-invalid': submitted && f.state.errors }">
+                                    <label class="form-check-label" for="inlineRadio4">Lactancia</label>
+                                </div>
+                                <div *ngIf="f.state.errors && submitted" class="invalid-feedback">
+                                    <div *ngIf="f.state.errors.required">Este campo es obligatorio</div>
+                                </div>
+                            </div>
+                            <div role="group" class="form-group mb-4">
+                                <label for="birthdate" class="d-block form-label text-left text-uppercase letter-spacing-1">Fecha de nacimiento</label>
+                                <div role="group" class="input-group input-group-merge form-control-prepended">
+                                    <input id="birthdate" type="date" formControlName="date" name="birthdate" placeholder="dd/mm/yyyy" required="required" aria-required="true" class="form-control form-control-prepended" [ngClass]="{ 'is-invalid': submitted && f.date.errors }"/>
+                                </div>
+                                <div *ngIf="f.date.errors && submitted" class="invalid-feedback">
+                                    <div *ngIf="f.date.errors.required">Este campo es obligatorio</div>
+                                </div>
+                            </div>
+                            <div role="group" class="form-group mb-4">
+                                <label for="phone" class="d-block form-label text-left text-uppercase letter-spacing-1">Teléfono</label>
+                                <div role="group" class="input-group input-group-merge form-control-prepended">
+                                    <input id="phone" type="text" formControlName="phone" (keypress)="keyPressNumbers($event)" name="phone" placeholder="Teléfono" required="required" aria-required="true" class="form-control form-control-prepended" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"/>
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <span><i class="bi-telephone"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="f.phone.errors && submitted" class="invalid-feedback">
+                                    <div *ngIf="f.phone.errors.required">Este campo es obligatorio</div>
+                                </div>
+                            </div>
+                            <div role="group" class="form-group mb-4">
+                                <label for="company-name" class="d-block form-label text-left text-uppercase letter-spacing-1">Contraseña</label>
+                                <div role="group" class="input-group input-group-merge form-control-prepended">
+                                    <input id="password" type="password" formControlName="password" name="password" placeholder="Contraseña" required="required" aria-required="true" class="form-control form-control-prepended color_input" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <span><i class="bi-lock"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="f.password.errors && submitted" class="invalid-feedback">
+                                    <div *ngIf="f.password.errors.required">Este campo es obligatorio</div>
+                                </div>
+                            </div>
+                            <div role="group" class="form-group mb-4">
+                                <label for="company-name" class="d-block form-label text-left text-uppercase letter-spacing-1">Confirmar contraseña</label>
+                                <div role="group" class="input-group input-group-merge form-control-prepended">
+                                    <input id="password-confirm" type="password" formControlName="password_confirm" name="confirm-password" placeholder="Confirmar contraseña" required="required" aria-required="true" class="form-control form-control-prepended color_input" [ngClass]="{ 'is-invalid': submitted && f.password_confirm.errors }"/>
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <span><i class="bi-lock"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="f.password_confirm.errors && submitted" class="invalid-feedback">
+                                    <div *ngIf="f.password_confirm.errors.required">Este campo es obligatorio</div>
+                                    <div *ngIf="f.password_confirm.errors.mustMatch">Las contraseñas no coinciden</div>
+                                </div>
+                            </div>
+                            <div class="form-group mb-0 d-grid">
+                                <button type="submit" class="btn btn-primary btn-block" [disabled]="request" [ngClass]="{ 'disabled': request }">Registrarme</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <div class="text-center text-black-50">
+                            <a style="cursor: pointer; color: blue" (click)="login()">¿Ya estás registrado?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-notify #notify></app-notify>
