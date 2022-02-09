@@ -1,0 +1,30 @@
+<div class="row-cols-auto main">
+    <app-dashboard #dash></app-dashboard>
+    <div class="col-10 p-5">
+        <div class="page-title">
+            <h4 class="font-bold font-18">Pantalla Principal</h4>
+            <p>Bienvenido a tu área de gestión</p>
+        </div>
+        <div class="row">
+            <h5>{{ user }}<span><i class="bi-info-circle"></i></span></h5>
+        </div> 
+        <div class="row">
+            <div class="col-6">
+                <label for="email" class="form-label text-left text-uppercase letter-spacing-1">Correo electrónico:</label><span id="email" style="margin-left: 3%;">{{obj_user.email}}</span>
+            </div>
+            <div class="col-6">
+                <label for="birthdate" class="form-label text-left text-uppercase letter-spacing-1">Fecha de nacimiento:</label><span id="birthdate" style="margin-left: 3%;">{{parseDate(obj_user.date)}}</span>
+            </div>
+            <div class="col-6">
+                <label for="gender" class="form-label text-left text-uppercase letter-spacing-1">Sexo:</label><span id="gender" style="margin-left: 3%;">{{parseGender(obj_user.gender)}}</span>
+            </div>
+            <div class="col-6">
+                <label for="state" class="form-label text-left text-uppercase letter-spacing-1">Estado:</label><span id="state" style="margin-left: 3%;">{{obj_user.state.toUpperCase()}}</span>
+            </div>
+            <div class="col-6">
+                <label for="gender" class="form-label text-left text-uppercase letter-spacing-1">Teléfono:</label><span id="gender" style="margin-left: 3%;">{{obj_user.phone}}</span>
+            </div>
+            
+        </div> 
+    </div>
+</div>
