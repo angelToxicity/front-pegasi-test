@@ -1,0 +1,29 @@
+<div class="col d-flex flex-column flex-shrink-0 p-3 text-white bg-dark main" style="width: 250px;">
+    <a href="/user" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <img class="logo" src="/assets/images/pegasi.png" width="50"/>
+        <span class="font-32 font-bold" style="margin-left: 20%">PEGASI</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page">
+                <span><i class="bi-house-door"></i></span> Inicio
+            </a>
+        </li>
+    </ul>
+    <hr>
+    <div class="dropdown">
+        <a class="d-flex align-items-center text-white text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="/assets/images/pegasi.png" alt="" width="32" height="32" class="rounded-circle me-2">
+            <strong>{{user_nick}}</strong>
+        </a>
+        <br>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="#" (click)="signOut()" class="d-flex align-items-center text-white" aria-current="page">
+                    <span style="margin-right: 11%"><i class="bi-power"></i></span> Salir
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
