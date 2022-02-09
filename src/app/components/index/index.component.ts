@@ -51,7 +51,13 @@ export class IndexComponent implements OnInit {
       }, 3000);
     }, err => {
       this.request = false
-      this.notify.showNotify("liveToastError", err.error.message)
+      let e = null
+      if (err.error.message) {
+        e = err.error.message
+      } else {
+        e = "Sin conexion"
+      }
+      this.notify.showNotify("liveToastError", e)
     })
   }
   
